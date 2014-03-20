@@ -1,0 +1,6 @@
+{
+    "name": "afa/database",
+    "autoload": {
+        "psr-4": {"Afa\\": "src\\Afa"}
+    }
+}
