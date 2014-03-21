@@ -24,8 +24,10 @@ class Insert implements \Afa\Database\ICommand
         $this->table = $table;
     }
 
+
     /**
      * @param \Afa\Database\IConnection $connection
+     * @return \Afa\Database\IResult|\Afa\Database\Result\LastInsertId
      */
     public function execute(\Afa\Database\IConnection $connection)
     {
@@ -40,5 +42,8 @@ class Insert implements \Afa\Database\ICommand
         $sql = sprintf('INSERT INTO %s (%s) VALUES (%s)', $this->table, $columnsString, $valuesString);
 
         $connection->execute($sql, $this->data);
+        $lastInsertId = $connection->lastInsertId();
+
+        return new \Afa\Database\Result\LastInsertId($lastInsertId);
     }
 }

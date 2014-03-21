@@ -18,4 +18,9 @@ interface IConnection
      */
     public function execute($query, array $arguments);
 
+    /**
+     * @return int
+     */
+    public function lastInsertId();
+
 }
