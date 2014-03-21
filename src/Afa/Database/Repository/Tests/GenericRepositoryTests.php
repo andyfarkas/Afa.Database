@@ -96,7 +96,7 @@ class GenericRepositoryTests extends \PHPUnit_Framework_TestCase
             $entityMock
         );
         
-        $resultMock = new \Afa\Database\InMemoryResult(array($dbRow, $dbRow));                
+        $resultMock = new \Afa\Database\Result\InMemory(array($dbRow, $dbRow));
         
         $criteriaMock = $this->getMock('Afa\Database\ICriteria');
         $criteriaMock->expects($this->at(1))
@@ -127,7 +127,7 @@ class GenericRepositoryTests extends \PHPUnit_Framework_TestCase
     public function findMany_EmptyResult_ReturnsEmptyArray()
     {                        
         $expected = array();        
-        $resultMock = new \Afa\Database\InMemoryResult(array());                
+        $resultMock = new \Afa\Database\Result\InMemory(array());
         
         $criteriaMock = $this->getMock('Afa\Database\ICriteria');                
         $connectionMock = $this->getMock('Afa\Database\IConnection');

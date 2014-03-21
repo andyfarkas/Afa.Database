@@ -1,8 +1,8 @@
 <?php
 
-namespace Afa\Database;
+namespace Afa\Database\Result;
 
-class InMemoryResult implements IResult
+class InMemory implements \Afa\Database\IResult
 {
     /**
      *
