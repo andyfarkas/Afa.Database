@@ -26,4 +26,24 @@ class InsertTests extends \PHPUnit_Framework_TestCase
         $command->execute($connectionMock);
     }
 
+    /**
+     * @test
+     */
+    public function run_SuccessfulInsertCommand_ReturnsLastInsertedIdInResult()
+    {
+        $lastInsertId = 1;
+        $expectedResult = new \Afa\Database\Result\LastInsertId($lastInsertId);
+        $connectionMock = $this->getMock('Afa\Database\IConnection');
+        $connectionMock->expects($this->any())
+                        ->method('execute');
+        $connectionMock->expects($this->any())
+                        ->method('lastInsertId')
+                        ->will($this->returnValue($lastInsertId));
+
+        $command = new \Afa\Database\Command\Insert('table', $arguments = array());
+        $result = $command->execute($connectionMock);
+
+        $this->assertEquals($expectedResult, $result);
+    }
+
 }
