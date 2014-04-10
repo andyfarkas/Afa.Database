@@ -65,9 +65,10 @@ class Generic implements \Afa\Database\IRepository
     /**
      *
      * @param \Afa\Database\ICommand $command
+     * @return \Afa\Database\IResult
      */
     public function execute(\Afa\Database\ICommand $command)
     {
-        $command->execute($this->connection);
+        return $command->execute($this->connection);
     }
 }
